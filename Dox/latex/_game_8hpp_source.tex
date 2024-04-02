@@ -1,0 +1,165 @@
+\doxysection{Game.\+hpp}
+\hypertarget{_game_8hpp_source}{}\label{_game_8hpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}World.hpp"{}}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ The\ Game\ class,\ inheriting\ from\ D3DApp,\ represents\ the\ core\ of\ the\ game\ application.}}
+\DoxyCodeLine{00004\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_game}{Game}}\ :\ \textcolor{keyword}{public}\ D3DApp}
+\DoxyCodeLine{00005\ \{}
+\DoxyCodeLine{00006\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{comment}{//\ Constructor:\ Sets\ up\ the\ game\ with\ a\ given\ instance\ handle.}}
+\DoxyCodeLine{00008\ \ \ \ \ \mbox{\hyperlink{class_game}{Game}}(HINSTANCE\ hInstance);}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{comment}{//\ Deleted\ copy\ constructor\ and\ assignment\ operator\ to\ prevent\ copying.}}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{class_game}{Game}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_game}{Game}}\&\ rhs)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{class_game}{Game}}\&\ operator=(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_game}{Game}}\&\ rhs)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{comment}{//\ Destructor:\ Cleans\ up\ resources.}}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{class_game}{\string~Game}}();}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ Initializes\ the\ game\ components\ and\ resources.}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ Initialize()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ Handles\ window\ resizing\ events.}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ OnResize()\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ Updates\ the\ game\ state\ every\ frame.}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Update(\textcolor{keyword}{const}\ GameTimer\&\ gt)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ Renders\ the\ game\ every\ frame.}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Draw(\textcolor{keyword}{const}\ GameTimer\&\ gt)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ Input\ event\ handlers\ for\ mouse\ actions.}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ OnMouseDown(WPARAM\ btnState,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ OnMouseUp(WPARAM\ btnState,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ OnMouseMove(WPARAM\ btnState,\ \textcolor{keywordtype}{int}\ x,\ \textcolor{keywordtype}{int}\ y)\ \textcolor{keyword}{override};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ Processes\ keyboard\ input\ each\ frame.}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ OnKeyboardInput(\textcolor{keyword}{const}\ GameTimer\&\ gt);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ Updates\ the\ camera's\ position\ and\ orientation.}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ UpdateCamera(\textcolor{keyword}{const}\ GameTimer\&\ gt);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ Animates\ materials\ if\ necessary,\ per\ frame.}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ AnimateMaterials(\textcolor{keyword}{const}\ GameTimer\&\ gt);}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ Updates\ constant\ buffers\ for\ objects\ every\ frame.}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ UpdateObjectCBs(\textcolor{keyword}{const}\ GameTimer\&\ gt);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//\ Updates\ constant\ buffers\ for\ materials\ every\ frame.}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ UpdateMaterialCBs(\textcolor{keyword}{const}\ GameTimer\&\ gt);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//\ Updates\ the\ main\ pass\ constant\ buffer\ every\ frame.}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ UpdateMainPassCB(\textcolor{keyword}{const}\ GameTimer\&\ gt);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{comment}{//\ Loads\ textures\ from\ files.}}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ LoadTextures();}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//\ Creates\ the\ root\ signature\ for\ the\ GPU\ pipeline.}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ BuildRootSignature();}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ Creates\ descriptor\ heaps\ for\ resources.}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ BuildDescriptorHeaps();}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//\ Compiles\ shaders\ and\ defines\ the\ input\ layout.}}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ BuildShadersAndInputLayout();}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//\ Prepares\ geometry\ for\ shapes\ to\ be\ rendered.}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ BuildShapeGeometry();}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{comment}{//\ Creates\ the\ pipeline\ state\ objects\ (PSOs).}}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ BuildPSOs();}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{comment}{//\ Allocates\ frame\ resources.}}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ BuildFrameResources();}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{comment}{//\ Initializes\ materials\ used\ in\ the\ game.}}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ BuildMaterials();}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{comment}{//\ Organizes\ render\ items.}}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ BuildRenderItems();}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{comment}{//\ Draws\ render\ items\ with\ a\ given\ command\ list\ and\ list\ of\ items.}}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ DrawRenderItems(ID3D12GraphicsCommandList*\ cmdList,\ \textcolor{keyword}{const}\ std::vector<RenderItem*>\&\ ritems);}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{comment}{//\ Utility\ functions\ for\ terrain.}}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{float}\ GetHillsHeight(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ z)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00085\ \ \ \ \ XMFLOAT3\ GetHillsNormal(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ z)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{comment}{//\ Retrieves\ a\ set\ of\ static\ samplers\ for\ use\ in\ shaders.}}
+\DoxyCodeLine{00088\ \ \ \ \ std::array<const\ CD3DX12\_STATIC\_SAMPLER\_DESC,\ 6>\ GetStaticSamplers();}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{comment}{//\ Frame\ resources\ for\ triple\ buffering.}}
+\DoxyCodeLine{00092\ \ \ \ \ std::vector<std::unique\_ptr<FrameResource>>\ mFrameResources;}
+\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{struct_frame_resource}{FrameResource}}*\ mCurrFrameResource\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{int}\ mCurrFrameResourceIndex\ =\ 0;}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{comment}{//\ Size\ of\ CBV/SRV\ descriptor.}}
+\DoxyCodeLine{00097\ \ \ \ \ UINT\ mCbvSrvDescriptorSize\ =\ 0;}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{comment}{//\ Root\ signature\ for\ the\ rendering\ pipeline.}}
+\DoxyCodeLine{00100\ \ \ \ \ ComPtr<ID3D12RootSignature>\ mRootSignature\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{comment}{//\ Descriptor\ heap\ for\ shader\ resource\ views.}}
+\DoxyCodeLine{00103\ \ \ \ \ ComPtr<ID3D12DescriptorHeap>\ mSrvDescriptorHeap\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{comment}{//\ Storage\ for\ geometry\ data.}}
+\DoxyCodeLine{00106\ \ \ \ \ std::unordered\_map<std::string,\ std::unique\_ptr<MeshGeometry>>\ mGeometries;}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{comment}{//\ Storage\ for\ material\ data.}}
+\DoxyCodeLine{00109\ \ \ \ \ std::unordered\_map<std::string,\ std::unique\_ptr<Material>>\ mMaterials;}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{comment}{//\ Storage\ for\ texture\ data.}}
+\DoxyCodeLine{00112\ \ \ \ \ std::unordered\_map<std::string,\ std::unique\_ptr<Texture>>\ mTextures;}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{comment}{//\ Compiled\ shader\ objects.}}
+\DoxyCodeLine{00115\ \ \ \ \ std::unordered\_map<std::string,\ ComPtr<ID3DBlob>>\ mShaders;}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{comment}{//\ Input\ layout\ description\ for\ the\ vertex\ shader.}}
+\DoxyCodeLine{00118\ \ \ \ \ std::vector<D3D12\_INPUT\_ELEMENT\_DESC>\ mInputLayout;}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{comment}{//\ Pipeline\ state\ object\ for\ opaque\ rendering.}}
+\DoxyCodeLine{00121\ \ \ \ \ ComPtr<ID3D12PipelineState>\ mOpaquePSO\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{comment}{//\ All\ renderable\ items\ in\ the\ scene.}}
+\DoxyCodeLine{00124\ \ \ \ \ std::vector<std::unique\_ptr<RenderItem>>\ mAllRitems;}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{comment}{//\ Render\ items\ sorted\ by\ PSO\ (e.g.,\ opaque,\ transparent).}}
+\DoxyCodeLine{00127\ \ \ \ \ std::vector<RenderItem*>\ mOpaqueRitems;}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{comment}{//\ Pass\ constant\ buffer\ for\ the\ main\ render\ pass.}}
+\DoxyCodeLine{00130\ \ \ \ \ \mbox{\hyperlink{struct_pass_constants}{PassConstants}}\ mMainPassCB;}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{comment}{//\ Camera\ position\ and\ orientation.}}
+\DoxyCodeLine{00133\ \ \ \ \ XMFLOAT3\ mEyePos\ =\ \{\ 0.0f,\ 0.0f,\ -\/5.0f\ \};}
+\DoxyCodeLine{00134\ \ \ \ \ XMFLOAT4X4\ mView\ =\ MathHelper::Identity4x4();}
+\DoxyCodeLine{00135\ \ \ \ \ XMFLOAT4X4\ mProj\ =\ MathHelper::Identity4x4();}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{comment}{//\ Camera\ control\ variables.}}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{keywordtype}{float}\ mTheta\ =\ 1.3f\ *\ XM\_PI;}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordtype}{float}\ mPhi\ =\ 0.4f\ *\ XM\_PI;}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordtype}{float}\ mRadius\ =\ 2.5f;}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{comment}{//\ Last\ mouse\ position\ for\ camera\ control.}}
+\DoxyCodeLine{00143\ \ \ \ \ POINT\ mLastMousePos;}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{comment}{//\ Camera\ object\ for\ view/projection\ calculations.}}
+\DoxyCodeLine{00146\ \ \ \ \ Camera\ mCamera;}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{comment}{//\ World\ object\ for\ managing\ game\ world\ entities\ and\ state.}}
+\DoxyCodeLine{00149\ \ \ \ \ \mbox{\hyperlink{class_world}{World}}\ mWorld;}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{comment}{//\ Accessors\ for\ game\ resources.}}
+\DoxyCodeLine{00153\ \ \ \ \ std::vector<std::unique\_ptr<RenderItem>>\&\ getRenderItems()\ \{\ \textcolor{keywordflow}{return}\ mAllRitems;\ \}}
+\DoxyCodeLine{00154\ \ \ \ \ std::unordered\_map<std::string,\ std::unique\_ptr<Material>>\&\ getMaterials()\ \{\ \textcolor{keywordflow}{return}\ mMaterials;\ \}}
+\DoxyCodeLine{00155\ \ \ \ \ std::unordered\_map<std::string,\ std::unique\_ptr<MeshGeometry>>\&\ getGeometries()\ \{\ \textcolor{keywordflow}{return}\ mGeometries;\ \}}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{comment}{//\ Accessor\ for\ player\ aircraft,\ for\ gameplay\ programming.}}
+\DoxyCodeLine{00158\ \ \ \ \ \mbox{\hyperlink{class_aircraft}{Aircraft}}*\ getPlayerAircraft()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ playerAircraft;\ \}}
+\DoxyCodeLine{00159\ \ \ \ \ \mbox{\hyperlink{class_aircraft}{Aircraft}}*\ playerAircraft;\ \textcolor{comment}{//\ Direct\ pointer\ to\ the\ player's\ aircraft\ for\ easy\ access.}}
+\DoxyCodeLine{00160\ \};}
+
+\end{DoxyCode}

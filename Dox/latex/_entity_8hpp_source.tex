@@ -1,0 +1,33 @@
+\doxysection{Entity.\+hpp}
+\hypertarget{_entity_8hpp_source}{}\label{_entity_8hpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}SceneNode.hpp"{}}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ The\ Entity\ class\ represents\ any\ object\ in\ the\ game\ that\ has\ a\ position,\ velocity,\ and\ can\ be\ updated.}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ It\ inherits\ from\ SceneNode,\ meaning\ it\ can\ be\ part\ of\ the\ scene\ graph.}}
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_entity}{Entity}}\ :}
+\DoxyCodeLine{00007\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_scene_node}{SceneNode}}}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{comment}{//\ Constructor:\ Initializes\ the\ entity\ within\ the\ game\ world.}}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{class_entity}{Entity}}(\mbox{\hyperlink{class_game}{Game}}*\ game);}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{comment}{//\ Sets\ the\ entity's\ velocity\ to\ a\ specific\ vector.}}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{keywordtype}{void}\ setVelocity(XMFLOAT3\ velocity);}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{comment}{//\ Overloaded\ setVelocity:\ Allows\ setting\ the\ velocity\ using\ individual\ x,\ y,\ z\ components.}}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{void}\ setVelocity(\textcolor{keywordtype}{float}\ vx,\ \textcolor{keywordtype}{float}\ vy,\ \textcolor{keywordtype}{float}\ vz);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//\ Returns\ the\ current\ velocity\ of\ the\ entity\ as\ a\ 3D\ vector.}}
+\DoxyCodeLine{00020\ \ \ \ \ XMFLOAT3\ getVelocity()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ Updates\ the\ entity's\ state.\ This\ method\ is\ called\ once\ per\ frame\ and\ is\ meant\ to\ be\ overridden\ by\ derived\ classes.}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//\ The\ GameTimer\ object\ provides\ timing\ information\ such\ as\ delta\ time.}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ updateCurrent(\textcolor{keyword}{const}\ GameTimer\&\ gt);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ XMFLOAT3\ mVelocity;\ \textcolor{comment}{//\ Holds\ the\ current\ velocity\ of\ the\ entity\ in\ 3D\ space.}}
+\DoxyCodeLine{00028\ \};}
+
+\end{DoxyCode}

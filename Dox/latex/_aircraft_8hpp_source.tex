@@ -1,0 +1,72 @@
+\doxysection{Aircraft.\+hpp}
+\hypertarget{_aircraft_8hpp_source}{}\label{_aircraft_8hpp_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}Entity.hpp"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ The\ Aircraft\ class\ represents\ a\ specific\ type\ of\ entity\ in\ the\ game\ -\/\ an\ aircraft.}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ It\ inherits\ from\ Entity\ to\ leverage\ common\ entity\ functionalities\ like\ positioning\ and\ movement.}}
+\DoxyCodeLine{00007\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_aircraft}{Aircraft}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_entity}{Entity}}}
+\DoxyCodeLine{00008\ \{}
+\DoxyCodeLine{00009\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{comment}{//\ Enum\ to\ define\ the\ possible\ types\ of\ aircrafts\ in\ the\ game.}}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keyword}{enum}\ Type}
+\DoxyCodeLine{00012\ \ \ \ \ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ Eagle,\ \textcolor{comment}{//\ Represents\ an\ Eagle\ type\ aircraft.}}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ Raptor,\ \textcolor{comment}{//\ Represents\ a\ Raptor\ type\ aircraft.}}
+\DoxyCodeLine{00015\ \ \ \ \ \};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{comment}{//\ Constructor:\ Initializes\ an\ aircraft\ with\ a\ specific\ type\ and\ game\ context.}}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{class_aircraft}{Aircraft}}(Type\ type,\ \mbox{\hyperlink{class_game}{Game}}*\ game);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ Gets\ the\ current\ position\ of\ the\ aircraft.}}
+\DoxyCodeLine{00022\ \ \ \ \ XMFLOAT3\ getPosition()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ mPosition;\ \}}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ Abstract\ method\ to\ get\ the\ forward\ vector\ of\ the\ aircraft.\ Implementation\ should\ define\ how\ this\ vector\ is\ calculated.}}
+\DoxyCodeLine{00025\ \ \ \ \ XMFLOAT3\ getForwardVector()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ Gets\ the\ pitch\ (rotation\ around\ the\ x-\/axis)\ of\ the\ aircraft.}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{float}\ getPitch()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00029\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ XMFLOAT3\ rotation\ =\ getWorldRotation();\ \textcolor{comment}{//\ Obtain\ rotation\ from\ the\ Entity\ base\ class.}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ rotation.x;\ \textcolor{comment}{//\ Return\ the\ Pitch\ component.}}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ Gets\ the\ yaw\ (rotation\ around\ the\ y-\/axis)\ of\ the\ aircraft.}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{float}\ getYaw()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00036\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ XMFLOAT3\ rotation\ =\ getWorldRotation();\ \textcolor{comment}{//\ Obtain\ rotation\ from\ the\ Entity\ base\ class.}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ rotation.y;\ \textcolor{comment}{//\ Return\ the\ Yaw\ component.}}
+\DoxyCodeLine{00039\ \ \ \ \ \}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ Gets\ the\ roll\ (rotation\ around\ the\ z-\/axis)\ of\ the\ aircraft.}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{float}\ getRoll()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00043\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ XMFLOAT3\ rotation\ =\ getWorldRotation();\ \textcolor{comment}{//\ Obtain\ rotation\ from\ the\ Entity\ base\ class.}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ rotation.z;\ \textcolor{comment}{//\ Return\ the\ Roll\ component.}}
+\DoxyCodeLine{00046\ \ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//\ Draws\ the\ current\ aircraft.\ To\ be\ implemented\ specifically\ in\ derived\ classes.}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ drawCurrent()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//\ Builds\ the\ graphical\ representation\ of\ the\ aircraft.\ Specific\ to\ derived\ classes.}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ buildCurrent();}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{comment}{//\ The\ position\ of\ the\ aircraft\ in\ the\ game\ world.}}
+\DoxyCodeLine{00056\ \ \ \ \ XMFLOAT3\ mPosition;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{comment}{//\ Updates\ the\ state\ of\ the\ aircraft\ with\ respect\ to\ the\ game\ timer.}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ updateCurrent(\textcolor{keyword}{const}\ GameTimer\&\ gt);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//\ The\ type\ of\ the\ aircraft,\ determined\ by\ the\ Type\ enum.}}
+\DoxyCodeLine{00063\ \ \ \ \ Type\ mType;}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//\ The\ sprite\ associated\ with\ the\ aircraft\ for\ rendering.}}
+\DoxyCodeLine{00066\ \ \ \ \ std::string\ mSprite;}
+\DoxyCodeLine{00067\ \};}
+
+\end{DoxyCode}
