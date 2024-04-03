@@ -19,10 +19,10 @@ void InputHandler::handleRealtimeInput(CommandQueue& commands) {
 }
 
 void InputHandler::initializeActions() {
-    // Initialize command actions here
+    //  command actions here
 }
 
 bool InputHandler::isRealtimeAction(Action action) {
-    // Determine if the action is a real-time action
+    // real-time action
     return true;
 }

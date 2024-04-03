@@ -37,7 +37,6 @@ Player::Player()
 void Player::handleEvent(CommandQueue& commands) 
 {
     mInputHandler.handleEvent(commands);
-    // Implement other player event handling logic if needed
 }
 
 void Player::handleRealtimeInput(CommandQueue& commands)
@@ -71,10 +70,10 @@ void Player::initializeActions()
 {
     const float playerSpeed = 200.f;
 
-    //mActionBinding[MoveLeft] = Command(AircraftMover(-playerSpeed, 0.f), Category::PlayerAircraft);
-    //mActionBinding[MoveRight] = Command(AircraftMover(playerSpeed, 0.f), Category::PlayerAircraft);
-    //mActionBinding[MoveUp] = Command(AircraftMover(0.f, -playerSpeed), Category::PlayerAircraft);
-    //mActionBinding[MoveDown] = Command(AircraftMover(0.f, playerSpeed), Category::PlayerAircraft);
+   //mActionBinding[MoveLeft] = Command(AircraftMover(-playerSpeed, 0.f), Category::PlayerAircraft);
+   //mActionBinding[MoveRight] = Command(AircraftMover(playerSpeed, 0.f), Category::PlayerAircraft);
+   //mActionBinding[MoveUp] = Command(AircraftMover(0.f, -playerSpeed), Category::PlayerAircraft);
+   //mActionBinding[MoveDown] = Command(AircraftMover(0.f, playerSpeed), Category::PlayerAircraft);
 }
 
 bool Player::isRealtimeAction(Action action)
