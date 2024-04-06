@@ -11,7 +11,7 @@ World::World(Game* game)
     , mScrollSpeed(1.0f)               // Set the background scroll speed.
     , mInputHandler(nullptr)
 {
-    buildScene();
+    //buildScene();
 }
 
 // Update the world state based on game timer.

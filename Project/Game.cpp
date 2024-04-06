@@ -16,6 +16,11 @@ Game::~Game()
 		FlushCommandQueue();
 }
 
+void Game::BuildWorldScene()
+{
+	mWorld.buildScene();
+}
+
 bool Game::Initialize()
 {
 	if (!D3DApp::Initialize())
@@ -36,6 +41,9 @@ bool Game::Initialize()
 	BuildShadersAndInputLayout();
 	BuildShapeGeometry();
 	BuildMaterials();
+
+	BuildWorldScene();
+
 	BuildRenderItems();
 	BuildFrameResources();
 	BuildPSOs();
@@ -45,6 +53,7 @@ bool Game::Initialize()
 	// Execute the initialization commands.
 	ThrowIfFailed(mCommandList->Close());
 	ID3D12CommandList* cmdsLists[] = { mCommandList.Get() };
+	//mCommandQueue->ExecuteCommandLists(_countof(cmdsLists), cmdsLists);
 
 	// Wait until initialization is complete.
 	FlushCommandQueue();

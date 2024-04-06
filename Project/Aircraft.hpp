@@ -2,12 +2,12 @@
 #include "Entity.hpp"
 #include <string>
 
-// The Aircraft class represents a specific type of entity in the game - an aircraft.
-// It inherits from Entity to leverage common entity functionalities like positioning and movement.
-class Aircraft : public Entity
+
+class Aircraft : 
+    public Entity
 {
 public:
-    // Enum to define the possible types of aircrafts in the game.
+
     enum Type
     {
         Eagle, // Represents an Eagle type aircraft.

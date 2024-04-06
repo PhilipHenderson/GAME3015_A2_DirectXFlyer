@@ -74,6 +74,8 @@ private:
     // Organizes render items.
     void BuildRenderItems();
 
+    void BuildWorldScene();
+
     // Draws render items with a given command list and list of items.
     void DrawRenderItems(ID3D12GraphicsCommandList* cmdList, const std::vector<RenderItem*>& ritems);
 
